@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="437.28" height="241.639" viewBox="0 0 437.28 241.639">
+  <g id="logosha" transform="translate(-93.717 23.258)">
+    <g id="logo_taskez" data-name="logo/taskez" transform="translate(340.628 6.11)">
+      <g id="logo" transform="translate(0 0)">
+        <path id="Path" d="M82.975,3.273a24.426,24.426,0,0,1,24.426,0l70.756,40.855a24.426,24.426,0,0,1,12.212,21.154v81.707a24.426,24.426,0,0,1-12.213,21.154L107.394,209a24.426,24.426,0,0,1-24.426,0L12.212,168.142A24.426,24.426,0,0,1,0,146.988V65.276a24.425,24.425,0,0,1,12.211-21.15Z" transform="translate(0 0)" fill="#0030a9"/>
+        <path id="Path-2" data-name="Path" d="M.5,0V68.7" transform="translate(87.054 67.969)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333"/>
+        <path id="Path-3" data-name="Path" d="M.5,0V30.531" transform="translate(71.788 90.868)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333" opacity="0.5"/>
+        <path id="Path-4" data-name="Path" d="M.5,0V7.632" transform="translate(56.524 102.317)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333" opacity="0.3"/>
+        <path id="Path-5" data-name="Path" d="M.5,0V68.7" transform="translate(102.321 75.601)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333"/>
+        <path id="Path-6" data-name="Path" d="M.5,0V30.531" transform="translate(117.585 90.868)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333" opacity="0.3"/>
+        <path id="Path-7" data-name="Path" d="M.5,0V7.632" transform="translate(132.852 102.317)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.333" opacity="0.3"/>
+      </g>
+    </g>
+    <g id="Group_1" data-name="Group 1" transform="translate(93.717 -23)">
+      <text id="شاورني" transform="translate(8 110.742)" fill="#fff" font-size="75" font-family="SSTArabic-Medium, SST Arabic" font-weight="500"><tspan x="0" y="0">شاورني</tspan></text>
+      <text id="Shawrny" transform="translate(0 193.742)" fill="#fff" font-size="55" font-family="SSTArabic-Bold, SST Arabic" font-weight="700"><tspan x="0" y="0">Shawrny</tspan></text>
+    </g>
+  </g>
+</svg>

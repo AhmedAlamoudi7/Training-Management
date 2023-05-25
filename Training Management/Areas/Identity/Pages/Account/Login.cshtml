@@ -1,0 +1,221 @@
+﻿@page
+@model LoginModel
+
+@{
+	ViewData["Title"] = "تسجيل الدخول";
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en" dir="rtl" direction="rtl" style="direction:rtl;">
+<!--begin::Head-->
+<head>
+	<meta name="description" content="  " />
+	<meta name="keywords" content=" " />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content=" " />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- fontawesome css link -->
+
+	<link rel="stylesheet" href="~/assets/css/fontawesome-all.min.css">
+	<!-- bootstrap css link -->
+	<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+
+	<!-- favicon -->
+	<link rel="shortcut icon" href="~/assets/images/ahmedalamoudylogo.png" type="image/x-icon">
+	<!--begin::Fonts(mandatory for all pages)-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+	<!--end::Fonts-->
+	<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+	<link href="~/assets/login/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/login/css/style.bundlee.css" rel="stylesheet" type="text/css" />
+	<style></style>
+	<!--end::Global Stylesheets Bundle-->
+	<!--Begin::Google Tag Manager -->
+	<script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');</script>
+	<!--End::Google Tag Manager -->
+	<style>
+		button#kt_sign_in_submit {
+		}
+
+
+		button#kt_sign_up_submit:hover {
+		}
+
+		.btn-check:active + .btn.btn-primary,
+		.btn-check:checked + .btn.btn-primary,
+		.btn.btn-primary.active,
+		.btn.btn-primary.show,
+		.btn.btn-primary:active:not(.btn-active),
+		.btn.btn-primary:focus:not(.btn-active),
+		.btn.btn-primary:hover:not(.btn-active),
+		.show > .btn.btn-primary {
+			color: #fff;
+		}
+
+		.link-primary {
+		}
+
+		button.symbol.symbol-circle.symbol-45px.w-45px.bg-light.me-3 {
+			border: none;
+		}
+
+		.d-flex.align-items-center {
+			float: right;
+			margin-top: -44px;
+		}
+
+		img.p-4 {
+			text-align: center;
+			padding: 8px !important;
+			background: none !important;
+		}
+
+		button.symbol.symbol-circle.symbol-45px.w-45px.bg-light.me-3 {
+			text-align: center;
+			background: none !important;
+		}
+	</style>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="app-blank app-blank">
+	<!--begin::Theme mode setup on page load-->
+	<script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-theme-mode")) { themeMode = document.documentElement.getAttribute("data-theme-mode"); } else { if (localStorage.getItem("data-theme") !== null) { themeMode = localStorage.getItem("data-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", themeMode); }</script>
+	<!--end::Theme mode setup on page load-->
+	<!--Begin::Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!--End::Google Tag Manager (noscript) -->
+	<!--begin::Root-->
+	<div class="d-flex flex-column flex-root" id="kt_app_root">
+		<!--begin::Authentication - Sign-in -->
+		<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+			<!--begin::Logo-->
+ 
+			<!--end::Logo-->
+			<!--begin::Aside-->
+			<div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10">
+				<!--begin::Wrapper-->
+				<div class="d-flex justify-content-between flex-column-fluid flex-column w-100 mw-450px">
+					<!--begin::Header-->
+					<div class="d-flex flex-stack py-2">
+						<!--begin::Back link-->
+ 						<!--end::Back link-->
+						<!--begin::Sign Up link-->
+						<div class="m-2" >
+ 							<a href="~/Home/Index" class="link-primary fw-bold fs-1"  >الصفحة الرئيسية</a>
+						</div>
+						<!--end::Sign Up link=-->
+					</div>
+					<!--end::Header-->
+					<!--begin::Body-->
+					<div class="py-20">
+						<!--begin::Form-->
+						<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="post">
+							<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+							<!--begin::Body-->
+							<div class="card-body">
+								<!--begin::Heading-->
+								<div class="text-start mb-10">
+									<!--begin::Title-->
+									<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">تسجيل الدخول</h1>
+									<!--end::Title-->
+									<!--begin::Text-->
+ 									<!--end::Link-->
+								</div>
+								<!--begin::Heading-->
+								<!--begin::Input group=-->
+								<div class="fv-row mb-8">
+									<!--begin::Email-->
+									<input type="text" placeholder="البريد الالكتروني" name="email" autocomplete="off" class="form-control form-control-solid" />
+									<!--end::Email-->
+								</div>
+								<!--end::Input group=-->
+								<div class="fv-row mb-7">
+									<!--begin::Password-->
+									<input type="password" placeholder="كلمة المرور" name="password" autocomplete="off" class="form-control form-control-solid" />
+									<!--end::Password-->
+								</div>
+								<!--end::Input group=-->
+								<!--begin::Wrapper-->
+								<div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
+									<div></div>
+									<!--begin::Link-->
+ 									<!--end::Link-->
+								</div>
+								<!--end::Wrapper-->
+								<!--begin::Actions-->
+								<div class="d-flex flex-stack">
+									<!--begin::Submit-->
+									<button id="kt_sign_in_submit" class="btn btn-primary me-2 flex-shrink-0">
+										<!--begin::Indicator label-->
+										<span class="indicator-label" data-kt-translate="sign-in-submit">تسجيل دخول</span>
+										<!--end::Indicator label-->
+										<!--begin::Indicator progress-->
+										<span class="indicator-progress">
+											<span data-kt-translate="general-progress">الرجاء الإنتظار</span>
+											<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+										</span>
+										<!--end::Indicator progress-->
+									</button>
+									<!--end::Submit-->
+								</div>
+								<!--end::Actions-->
+							</div>
+							<!--begin::Body-->
+						</form>
+						<!--end::Form-->
+
+
+						<div class="py-20">
+
+							<!--end::Form-->
+							<div class="d-flex flex-stack">
+
+ 
+							</div>
+						</div>
+					</div>
+					<!--end::Body-->
+					<!--begin::Footer-->
+					<div class="m-0">
+					</div>
+					<!--end::Footer-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Aside-->
+			<!--begin::Body-->
+			<div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat" style="background-image: url(/assets/login/imges/login/6592.jpg)"></div>
+			<!--begin::Body-->
+		</div>
+		<!--end::Authentication - Sign-in-->
+	</div>
+	<!--end::Root-->
+	<!--begin::Javascript-->
+	<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+	<script src="~/assets/login/js/plugins.bundle.js"></script>
+	<script src="~/assets/login/js/scripts.bundle.js"></script>
+	<!--end::Global Javascript Bundle-->
+	<!--begin::Custom Javascript(used for this page only)-->
+	<script src="~/assets/login/js/sign-in/general.js"></script>
+	<script src="~/assets/login/js/sign-in/i18n.js"></script>
+	<!--end::Custom Javascript-->
+	<!--end::Javascript-->
+</body>
+<!--end::Body-->
+</html>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

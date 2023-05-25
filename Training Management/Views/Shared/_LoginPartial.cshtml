@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TrainingManagement.Constants;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    foreach (var item in ViewBag.Roles)
+    {
+        if (item == Constant.RolesFilter.SuperAdmin ||item == Constant.RolesFilter.Admin )
+        {
+                <div>
+            <img src="data:image/*;base64,@(Convert.ToBase64String(ViewBag.UserImg))" alt="..." class="rounded-circle left" width="45px">
+                <a href="~/ControlPanel/AdminHome/Index">
+                <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.FullName</h6>
+            </a>
+        </div>
+
+        <div class="userlogin ml-5"></div>
+        <div class="userlogin ml-5"></div>
+        }else
+        {
+                   <div>
+            <img src="data:image/*;base64,@(Convert.ToBase64String(ViewBag.UserImg))" alt="..." class="rounded-circle left" width="45px">
+                <a href="@Constant.Links.ProgileHomeIndex">
+                <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.FullName</h6>
+            </a>
+        </div>
+
+        <div class="userlogin ml-5"></div>
+        <div class="userlogin ml-5"></div>
+        }
+    }
+
+}
+else
+{
+            <div class="header-right">
+            <div class="header-action-area">
+                <div class="header-action">
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn--base">تسجيل دخول</a>
+                </div>
+            </div>
+            <div class="header-action-area">
+                <div class="header-action">
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn--base">إنشاء حساب</a>
+                </div>
+            </div>
+        </div>
+
+}
