@@ -9,18 +9,18 @@ using Training_Management.Data;
 
 #nullable disable
 
-namespace TrainingManagement.Data.Migrations
+namespace Training_Management.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230524110746_IdenetityModel")]
-    partial class IdenetityModel
+    [Migration("20230527161222_init_role")]
+    partial class init_role
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -105,12 +105,10 @@ namespace TrainingManagement.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -147,12 +145,10 @@ namespace TrainingManagement.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -162,7 +158,54 @@ namespace TrainingManagement.Data.Migrations
                     b.ToTable("UserTokens", "security");
                 });
 
-            modelBuilder.Entity("Shawrney.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Training_Management.Models.Advisor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DesciplineType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Advisors");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -242,120 +285,6 @@ namespace TrainingManagement.Data.Migrations
                     b.ToTable("Users", "security");
                 });
 
-            modelBuilder.Entity("TraineeTrainingProgram", b =>
-                {
-                    b.Property<int>("TraineesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainingProgramsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TraineesId", "TrainingProgramsId");
-
-                    b.HasIndex("TrainingProgramsId");
-
-                    b.ToTable("TraineeTrainingProgram");
-                });
-
-            modelBuilder.Entity("Training_Management.Models.Advisor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discipline")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Advisors");
-                });
-
-            modelBuilder.Entity("Training_Management.Models.Appointment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AdvisorId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TraineeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdvisorId");
-
-                    b.HasIndex("TraineeId");
-
-                    b.ToTable("Appointment");
-                });
-
             modelBuilder.Entity("Training_Management.Models.Document", b =>
                 {
                     b.Property<int>("Id")
@@ -397,7 +326,7 @@ namespace TrainingManagement.Data.Migrations
 
                     b.HasIndex("TraineeId");
 
-                    b.ToTable("Document");
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Manager", b =>
@@ -448,6 +377,67 @@ namespace TrainingManagement.Data.Migrations
                     b.ToTable("Managers");
                 });
 
+            modelBuilder.Entity("Training_Management.Models.Meeeting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AdvisorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndSession")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartSession")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TraineeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvisorId");
+
+                    b.HasIndex("TraineeId");
+
+                    b.ToTable("Meeetings");
+                });
+
             modelBuilder.Entity("Training_Management.Models.Trainee", b =>
                 {
                     b.Property<int>("Id")
@@ -472,21 +462,25 @@ namespace TrainingManagement.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GenderType")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("bit");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ManagerId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -513,6 +507,32 @@ namespace TrainingManagement.Data.Migrations
                     b.ToTable("Trainees");
                 });
 
+            modelBuilder.Entity("Training_Management.Models.TraingProgrameTrainee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("TraineeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrainingProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TraineeId");
+
+                    b.HasIndex("TrainingProgramId");
+
+                    b.ToTable("TraingProgrameTrainees");
+                });
+
             modelBuilder.Entity("Training_Management.Models.TrainingProgram", b =>
                 {
                     b.Property<int>("Id")
@@ -527,6 +547,12 @@ namespace TrainingManagement.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("End")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -536,7 +562,14 @@ namespace TrainingManagement.Data.Migrations
                     b.Property<bool>("IsPaid")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -562,7 +595,7 @@ namespace TrainingManagement.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", null)
+                    b.HasOne("Training_Management.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -571,7 +604,7 @@ namespace TrainingManagement.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", null)
+                    b.HasOne("Training_Management.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -586,7 +619,7 @@ namespace TrainingManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", null)
+                    b.HasOne("Training_Management.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -595,54 +628,20 @@ namespace TrainingManagement.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", null)
+                    b.HasOne("Training_Management.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TraineeTrainingProgram", b =>
-                {
-                    b.HasOne("Training_Management.Models.Trainee", null)
-                        .WithMany()
-                        .HasForeignKey("TraineesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Training_Management.Models.TrainingProgram", null)
-                        .WithMany()
-                        .HasForeignKey("TrainingProgramsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Training_Management.Models.Advisor", b =>
                 {
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Training_Management.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Advisor")
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Training_Management.Models.Appointment", b =>
-                {
-                    b.HasOne("Training_Management.Models.Advisor", "Advisor")
-                        .WithMany()
-                        .HasForeignKey("AdvisorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Training_Management.Models.Trainee", "Trainee")
-                        .WithMany()
-                        .HasForeignKey("TraineeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Advisor");
-
-                    b.Navigation("Trainee");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Document", b =>
@@ -658,11 +657,30 @@ namespace TrainingManagement.Data.Migrations
 
             modelBuilder.Entity("Training_Management.Models.Manager", b =>
                 {
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Training_Management.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Manager")
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.Meeeting", b =>
+                {
+                    b.HasOne("Training_Management.Models.Advisor", "Advisor")
+                        .WithMany("Meeeting")
+                        .HasForeignKey("AdvisorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Training_Management.Models.Trainee", "Trainee")
+                        .WithMany("Meeeting")
+                        .HasForeignKey("TraineeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advisor");
+
+                    b.Navigation("Trainee");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Trainee", b =>
@@ -671,7 +689,7 @@ namespace TrainingManagement.Data.Migrations
                         .WithMany("Trainees")
                         .HasForeignKey("AdvisorId");
 
-                    b.HasOne("Shawrney.Data.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Training_Management.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Trainee")
                         .HasForeignKey("ApplicationUserId");
 
@@ -682,18 +700,39 @@ namespace TrainingManagement.Data.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Shawrney.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Training_Management.Models.TraingProgrameTrainee", b =>
+                {
+                    b.HasOne("Training_Management.Models.Trainee", "Trainee")
+                        .WithMany("TraingProgrameTrainee")
+                        .HasForeignKey("TraineeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Training_Management.Models.TrainingProgram", "TrainingProgram")
+                        .WithMany("TraingProgrameTrainee")
+                        .HasForeignKey("TrainingProgramId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trainee");
+
+                    b.Navigation("TrainingProgram");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.Advisor", b =>
+                {
+                    b.Navigation("Meeeting");
+
+                    b.Navigation("Trainees");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Advisor");
 
                     b.Navigation("Manager");
 
                     b.Navigation("Trainee");
-                });
-
-            modelBuilder.Entity("Training_Management.Models.Advisor", b =>
-                {
-                    b.Navigation("Trainees");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Manager", b =>
@@ -704,6 +743,15 @@ namespace TrainingManagement.Data.Migrations
             modelBuilder.Entity("Training_Management.Models.Trainee", b =>
                 {
                     b.Navigation("Documents");
+
+                    b.Navigation("Meeeting");
+
+                    b.Navigation("TraingProgrameTrainee");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.TrainingProgram", b =>
+                {
+                    b.Navigation("TraingProgrameTrainee");
                 });
 #pragma warning restore 612, 618
         }

@@ -94,8 +94,6 @@
                                     <!--end::Title-->
                                     <!--begin::Stats-->
                                     <div class="d-flex flex-wrap flex-stack">
-          
-
                                     </div>
                                     <!--end::Stats-->
                                 </div>
@@ -111,8 +109,7 @@
                                 <!--end::Nav item-->
                                 <!--begin::Nav item-->
                                 <li class="nav-item mt-2">
-                                    <a class="nav-link text-active-primary ms-0 me-10 py-5" href="~/ProfileAccount/AccountProfileUsers/EditUser/@ViewBag.UserId">الاعدادات</a>
-                                </li>
+                                 </li>
                                 <!--end::Nav item-->
                                 <!--begin::Nav item-->
                                 <li class="nav-item mt-2">
@@ -133,11 +130,15 @@
                             </div>
                             <!--end::Card title-->
                             <!--begin::Action-->
-                            <a href="~/ProfileAccount/AccountProfileUsers/EditUser/@ViewBag.UserId" class="btn btn-primary align-self-center">تعديل الحساب</a>
                             <!--end::Action-->
                         </div>
                         <!--begin::Card header-->
-                        <!--begin::Card body-->
+                @foreach (var item in ViewBag.Roles)
+                {
+                    if (item == Constant.RolesFilter.Trainee)
+                    {
+                        <a href="~/ProfileAccount/AccountProfileTrainees/EditTrainee/@ViewBag.TraineeIdKey" class="btn btn-primary align-self-center">تعديل الحساب</a>
+
                         <div class="card-body p-9">
                             <!--begin::Row-->
                             <div class="row mb-7">
@@ -167,13 +168,12 @@
                             <div class="row mb-7">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 fw-semibold text-muted">
-                                    الجنس
-                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i>
-                                </label>
+                                    الاسم كامل
+                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 d-flex align-items-center">
-                                    <span class="fw-bold fs-6 text-gray-800 me-2">@ViewBag.Phone</span>
+                                    <span class="fw-bold fs-6 text-gray-800 me-2">@ViewBag.FullName</span>
 
                                 </div>
                                 <!--end::Col-->
@@ -184,13 +184,25 @@
                             <div class="row mb-7">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 fw-semibold text-muted">
-                                     رقم التعريف الخاص
+                                    رقم التعريف الخاص
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
-                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Country</span>
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.TraineeId</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>      
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">
+                                    الجنس
+                                 </label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.GenderType</span>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -209,6 +221,131 @@
                             <!--end::Input group-->
                             <!--end::Notice-->
                         </div>
+
+                    }
+                    else if (item == Constant.RolesFilter.SuperAdmin)
+                    {
+                        <a href="~/ProfileAccount/AccountProfileUsers/EditUser/@ViewBag.UserId" class="btn btn-primary align-self-center">تعديل الحساب</a>
+
+                        <div class="card-body p-9">
+                            <!--begin::Row-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">اسم المستخدم</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.UserName</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+        
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">البريد الالكتروني</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Email</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--end::Notice-->
+                        </div>
+                    }
+                    else if (item == Constant.RolesFilter.Adviser)
+
+                    {
+                        <a href="~/ProfileAccount/AccountProfileAdvisors/EditAdvisor/@ViewBag.AdvisorId" class="btn btn-primary align-self-center">تعديل الحساب</a>
+
+                        <div class="card-body p-9">
+                            <!--begin::Row-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">الاسم </label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Name</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--begin::Input group-->
+         
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">
+                                    التخصص
+                                </label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.DesciplineType</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">البريد الالكتروني</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Email</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--end::Notice-->
+                        </div>
+
+
+                    }
+                    else if (item == Constant.RolesFilter.Manager)
+                    {
+                        <a href="~/ProfileAccount/AccountProfileManagers/EditManager/@ViewBag.managerId" class="btn btn-primary align-self-center">تعديل الحساب</a>
+
+                        <div class="card-body p-9">
+                            <!--begin::Row-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">الاسم </label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Name</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--begin::Input group-->
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-7">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 fw-semibold text-muted">البريد الالكتروني</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <span class="fw-bold fs-6 text-gray-800">@ViewBag.Email</span>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--end::Notice-->
+                        </div>
+                    }
+                    else
+                    {
+                        
+                    
+                    }
+
+                }
+                        <!--begin::Card body-->
                         <!--end::Card body-->
                     </div>
                     <!--end::details View-->
@@ -219,15 +356,7 @@
                 </div>
                 <!--end::Content container-->
             </div>
-     @*       <!--end::Content-->
-        }
-        else
-        {*@
-            <!--end::Toolbar-->
 
-@*            <!--end::Content wrapper-->
-        }
-    }*@
 </div>
 <!--end::Content wrapper-->
 @section Scripts{

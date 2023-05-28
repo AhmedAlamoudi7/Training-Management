@@ -27,9 +27,9 @@ namespace TrainingManagement.Constants
             public const string UserAndAdvisor = "User,Adviser";
             public const string User = "User";
             public const string Adviser = "Adviser";
-
-
-        }
+			public const string Trainee = "Trainee";
+            public const string Manager = "Manager";
+		}
         public static class Area
         {
             public const string ControlPanel = "ControlPanel";
@@ -130,7 +130,10 @@ namespace TrainingManagement.Constants
             public const string ConfirmEmailWithUserIdParameter = "/ProfileAccount/AccountProfileUsers/ConfirmEmail?userId=";
             public const string Login = "~/Identity/Account/Login";
             public const string Logout = "~/Identity/Account/Logout";
-            public const string ProfileUsersEditAdvisor = "~/ProfileAccount/AccountProfileUsers/EditAdvisor/";
+            public const string ProfileUsersEditAdvisor = "~/ProfileAccount/AccountProfileAdvisors/EditAdvisor/";
+            public const string ProfileUsersEditTrainee = "~/ProfileAccount/AccountProfileTrainees/EditTrainee/";
+            public const string ProfileUsersEditManager = "~/ProfileAccount/AccountProfileManagers/EditManager/";
+
             public const string ProfileUsersEditUser = "~/ProfileAccount/AccountProfileUsers/EditUser/";
             public const string ProfileUsersConsultationRequestData = "/ProfileAccount/AccountProfileUsers/ConsultationRequestData";
             public const string ProfileUsersPaymentData = "/ProfileAccount/AccountProfileUsers/Payment";

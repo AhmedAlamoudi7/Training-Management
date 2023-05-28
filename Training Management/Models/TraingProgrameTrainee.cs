@@ -9,7 +9,7 @@ namespace Training_Management.Models
 		public Trainee Trainee { get; set; }
 		public int TrainingProgramId { get; set; }
 		public TrainingProgram TrainingProgram { get; set; }
-		public List<WeekDays> WeekDays { get; set; }
+		//public List<WeekDays> WeekDays { get; set; }
 		public bool status { get; set; }
 
 	}

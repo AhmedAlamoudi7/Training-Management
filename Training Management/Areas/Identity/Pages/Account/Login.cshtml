@@ -1,4 +1,5 @@
 ﻿@page
+@using TrainingManagement.Enums;
 @model LoginModel
 
 @{
@@ -136,18 +137,44 @@
 								</div>
 								<!--begin::Heading-->
 								<!--begin::Input group=-->
-								<div class="fv-row mb-8">
+								<div class="fv-row mb-8" id="emaildiv">
+									<label class="form-label required">البريد الالكتروني</label>
+
 									<!--begin::Email-->
-									<input type="text" placeholder="البريد الالكتروني" name="email" autocomplete="off" class="form-control form-control-solid" />
+									<input type="text" placeholder="البريد الالكتروني" id="email" name="email" autocomplete="off" class="form-control form-control-solid" />
+									<!--end::Email-->
+								</div>
+								<div class="fv-row mb-8" id="traineeIdDiv">
+									<label class="form-label required">رقم المتدرب الخاص</label>
+
+									<!--begin::Email-->
+									<input type="text" placeholder="رقم المتدرب الخاص" name="traineeId" id="traineeId" autocomplete="off" class="form-control form-control-solid" />
 									<!--end::Email-->
 								</div>
 								<!--end::Input group=-->
 								<div class="fv-row mb-7">
+									<label class="form-label required">كلمة المرور</label>
+
 									<!--begin::Password-->
 									<input type="password" placeholder="كلمة المرور" name="password" autocomplete="off" class="form-control form-control-solid" />
 									<!--end::Password-->
 								</div>
 								<!--end::Input group=-->
+								<div class="fv-row mb-7">
+
+									<label class="form-label required">نوع الحساب</label>
+									<!--end::Label-->
+									<!--begin::Input-->
+									<select name="renderType" id="roleTypes" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1" >@RoleTypes.Trainee</option>
+										<option value="2" selected>@RoleTypes.Manager</option>
+										<option value="3">@RoleTypes.Advisor</option>
+										<option value="4">@RoleTypes.SuperAdmin</option>
+
+									</select>
+									<!--end::Input-->
+								</div>
 								<!--begin::Wrapper-->
 								<div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
 									<div></div>
@@ -176,10 +203,7 @@
 							<!--begin::Body-->
 						</form>
 						<!--end::Form-->
-
-
 						<div class="py-20">
-
 							<!--end::Form-->
 							<div class="d-flex flex-stack">
 
@@ -216,6 +240,34 @@
 </body>
 <!--end::Body-->
 </html>
+
 @section Scripts {
 	<partial name="_ValidationScriptsPartial" />
+	<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+
+ 
 }
+<script type="text/javascript">
+
+	$('#traineeIdDiv').hide();
+	$('#emaildiv').show();
+
+	$('#roleTypes').on('change', function () {
+		if (this.value == 1) {
+			$('#traineeIdDiv').show();
+			$('#emaildiv').hide();
+
+		} else {
+			$('#traineeIdDiv').hide();
+			$('#emaildiv').show();
+		}
+	});
+
+</script>
+
+ 

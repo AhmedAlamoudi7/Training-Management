@@ -1,5 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TrainingManagement.Services;
 using Training_Management.Data;
 using Training_Management.Models;
 
@@ -30,6 +32,16 @@ builder.Services.ConfigureApplicationCookie(options =>
 	options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddSingleton(new MapperConfiguration(cfg =>
+{
+	cfg.AddProfile(new Shawrney.infrastructure.Mapper.AutoMapper());
+}).CreateMapper());
+builder.Services.AddScoped<IAdviserService,AdviserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITraineeService, TraineeService>();
+builder.Services.AddScoped<IManagerService, ManagerService>();
 
 var app = builder.Build();
 

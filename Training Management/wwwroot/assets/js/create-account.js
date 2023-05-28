@@ -96,34 +96,16 @@ var KTCreateAccount = function () {
 	}
 	function submitId() {
 		
-		let special = $('#specializationId option:selected').val();
-		let degree = $('#degreeId option:selected').val();
-		let advisor_type = $('#advisor_type option:selected').val();
-		let country = $('#kt_ecommerce_select2_country option:selected').val();
-		let expert_type = $('#expert_type option:selected').val();
-		let skills = $("#skills").val();
-		let accept_term = $('#accept_terms').val();
-		String(skills);
+		let desciplineType = $('#desciplineType option:selected').val();
 		let formData = new FormData();
-		formData.append("CV", $("#cv")[0].files[0]);
-		formData.append("FirstName", $("#first_name").val());
-		formData.append("LastName", $("#last_name").val());
-		formData.append("Email", $("#email").val());
-		formData.append("Phone", $("#phone").val());
-		formData.append("AdvisorType", advisor_type);
-		formData.append("DegreeId", degree);
-		formData.append("SpecializationId", special);
-		formData.append("Skills", skills);
+		formData.append("Name", $("#name").val());
+ 		formData.append("Email", $("#email").val());
+ 		formData.append("DesciplineType", desciplineType);
 		formData.append("Password", $("#password").val());
 		formData.append("ConfirmPassword", $("#confirmpassword").val());
-		formData.append("Country", country);
-		formData.append("ExpertType", expert_type);
-		formData.append("Note", $("#Note").val());
-		formData.append("Accept_terms", accept_term);
-
 		$.ajax({
 			type: 'POST',
-			url: '/ProfileAccount/AccountProfileUsers/RegisterAdvisor',
+			url: '/Registeration/RegisterAdvisor',
 			//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			processData: false,
 			contentType: false,

@@ -15,19 +15,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Training_Management.Models;
+using TrainingManagement.Services;
+using System.Net.Mail;
 
 namespace Training_Management.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<LoginModel> _logger;
+		private readonly ITraineeService  _traineeService;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+		private readonly ILogger<LoginModel> _logger;
+
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, ITraineeService traineeService)
         {
             _signInManager = signInManager;
             _logger = logger;
-        }
+            _traineeService = traineeService;
+
+		}
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -65,15 +71,15 @@ namespace Training_Management.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
             [EmailAddress]
             public string Email { get; set; }
+			public string TraineeId { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-            [Required]
+			/// <summary>
+			///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+			///     directly from your code. This API may change or be removed in future releases.
+			/// </summary>
+			[Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -108,11 +114,29 @@ namespace Training_Management.Areas.Identity.Pages.Account
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (ModelState.IsValid)
+			if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = Microsoft.AspNetCore.Identity.SignInResult.Failed;
+                 if (Input.TraineeId != null)
+                {
+                    var trainee = await _traineeService.SearchByTraineeId(Input.TraineeId);
+					var username = new EmailAddressAttribute().IsValid(trainee.ApplicationUser.Email) ? new MailAddress(trainee.ApplicationUser.Email).User : trainee.ApplicationUser.Email;
+
+					if (trainee != null)
+                    {
+
+                        result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                    }
+
+                }
+                else
+				{
+					var username = new EmailAddressAttribute().IsValid(Input.Email) ? new MailAddress(Input.Email).User : Input.Email;
+
+					result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                }
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -134,8 +158,9 @@ namespace Training_Management.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
-            return Page();
+             return Page();
         }
+
+
     }
 }

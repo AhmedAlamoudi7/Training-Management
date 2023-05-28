@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ShawrneyClientWeb.Web.Areas.ProfileAccount.Controllers;
+using TrainingManagement.Services;
+using Training_Management.Areas.ProfileAccount.Controllers;
 using TrainingManagement.Constants;
 
 namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
 {
      public class AccountProfileHomeController : BaseController
     {
-        public AccountProfileHomeController( ) : base( )
-        {
-        }
+		public AccountProfileHomeController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService) : base(userService, adviserService, traineeService, managerService)
+		{
+		}
 
-        public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index()
 		{
 			return View();
         }

@@ -7,21 +7,22 @@
 {
     foreach (var item in ViewBag.Roles)
     {
-        if (item == Constant.RolesFilter.SuperAdmin ||item == Constant.RolesFilter.Admin )
+        if (item == Constant.RolesFilter.Manager || item == Constant.RolesFilter.Adviser)
         {
                 <div>
-            <img src="data:image/*;base64,@(Convert.ToBase64String(ViewBag.UserImg))" alt="..." class="rounded-circle left" width="45px">
-                <a href="~/ControlPanel/AdminHome/Index">
-                <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.FullName</h6>
+            <img src="~/assets/images/avatars/300-1.jpeg" alt="..." class="rounded-circle left" width="45px">
+                <a href="@Constant.Links.ProgileHomeIndex">
+                <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.Name</h6>
             </a>
         </div>
 
         <div class="userlogin ml-5"></div>
         <div class="userlogin ml-5"></div>
-        }else
+        }
+        else if (item == Constant.RolesFilter.Trainee )
         {
                    <div>
-            <img src="data:image/*;base64,@(Convert.ToBase64String(ViewBag.UserImg))" alt="..." class="rounded-circle left" width="45px">
+                <img src="~/assets/images/avatars/300-1.jpeg" alt="..." class="rounded-circle left" width="45px">
                 <a href="@Constant.Links.ProgileHomeIndex">
                 <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.FullName</h6>
             </a>
@@ -29,6 +30,18 @@
 
         <div class="userlogin ml-5"></div>
         <div class="userlogin ml-5"></div>
+        }
+        else if (item == Constant.RolesFilter.SuperAdmin)
+        {
+            <div>
+                <img src="~/assets/images/avatars/300-1.jpeg" alt="..." class="rounded-circle left" width="45px">
+                <a href="@Constant.Links.ProgileHomeIndex">
+                    <h6 class="right pr-2 " style="color: #fff; ">@ViewBag.UserName</h6>
+                </a>
+            </div>
+
+            <div class="userlogin ml-5"></div>
+            <div class="userlogin ml-5"></div>
         }
     }
 
@@ -41,11 +54,7 @@ else
                 <a asp-area="Identity" asp-page="/Account/Login" class="btn--base">تسجيل دخول</a>
                 </div>
             </div>
-            <div class="header-action-area">
-                <div class="header-action">
-                    <a asp-area="Identity" asp-page="/Account/Register" class="btn--base">إنشاء حساب</a>
-                </div>
-            </div>
+ 
         </div>
 
 }

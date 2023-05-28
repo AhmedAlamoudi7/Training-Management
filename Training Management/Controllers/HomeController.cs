@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TrainingManagement.Services;
 using System.Diagnostics;
+using Training_Management.Areas.ProfileAccount.Controllers;
 using Training_Management.Models;
 
 namespace Training_Management.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+    public class HomeController : BaseClientController
+	{
+		public HomeController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService) : base(userService, adviserService, traineeService, managerService)
+		{
+		}
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
+		public IActionResult Index()
         {
             return View();
         }

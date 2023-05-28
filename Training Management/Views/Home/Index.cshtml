@@ -1,6 +1,4 @@
-﻿@*@model InterfaceViewModel
-*@
-@{
+﻿@{
     ViewData["Title"] = "الصفحة الرئيسية";
     Layout = "_NewLayout";
 }
@@ -13,7 +11,7 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Start Banner
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<section id="banner-section1" class=" banner-section">
+<section id="banner-section1" class=" banner-section" style="background: transparent linear-gradient(241deg, #223d7c 0%, #000000 100%) 0% 0% no-repeat padding-box;">
     <div class="banner-text">
         <span>منصة التدريب</span>
     </div>
@@ -59,16 +57,6 @@
                     <div class="banner-arrow">
                         <img src="~/assets/images/element/element-1.png" alt="element">
                     </div>
-                    @*             @if (SignInManager.IsSignedIn(User))
-                    {
-                    <form class="banner-form" action="/ProfileAccount/AccountProfileHome/Advisors">
-                    <button type="submit" class="btn--base">بحث <i class="fab fa-telegram-plane"></i></button>
-                    <input type="text" class="form--control" name="GeneralSearch" placeholder="ابحث عن المستشار المناسب لك..">
-
-                    </form>
-
-                    }else
-                    {*@
                     <div class="banner-widget">
                         <div class="banner-widget-wrapper">
                             <div class="banner-widget-left">
@@ -103,35 +91,4 @@
 <a href="#" class="scrollToTop"><i class="las la-angle-double-up"></i></a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     End Scroll-To-Top
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Start overview
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
- 
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    End overview
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Start process-section
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
- 
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    End process-section
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Start Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
- 
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    End Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Start About
- 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Start Blog
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
- <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    End Blog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

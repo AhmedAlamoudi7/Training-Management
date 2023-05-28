@@ -5,11 +5,13 @@ namespace TrainingManagement.Enums
 {
     public enum RoleTypes
     {
-        [Display(Name = "مساعد مدير نظام")]
-        Admin = 0,
+        [Display(Name = "Trainee")]
+        Trainee = 0,
         [Display(Name = "مدير نظام")]
         SuperAdmin = 1,
-        [Display(Name = "مستخدم")]
-        User = 2,
-    }
+        [Display(Name = "Manager")]
+        Manager = 2,
+		[Display(Name = "Advisor")]
+		Advisor = 3,
+	}
 }
