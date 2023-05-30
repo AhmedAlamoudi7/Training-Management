@@ -1,4 +1,4 @@
-﻿@model List<TraineeViewModel>
+﻿@model List<ManagerViewModel>
 @{
     ViewData["Title"] = "";
 
@@ -25,7 +25,7 @@
                 <div class="card-header border-0 pt-5">
                     <h3 class="card-title align-items-start flex-column">
                         <span class="card-label fw-bold fs-3 mb-1"> </span>
-                        Trainees
+                        Maangers 
                     </h3>
 
                 </div>
@@ -40,9 +40,7 @@
                             <thead>
                                 <tr class="fw-bold text-muted bg-light">
                                     <th class="min-w-125px">Id </th>
-                                    <th class="min-w-125px">Full Name </th>
-                                    <th class="min-w-125px">GenderType </th>
-                                    <th class="min-w-125px">TraineeId </th>
+                                    <th class="min-w-125px">Name </th>
                                     <th class="min-w-125px">Email </th>
                                     <th class="min-w-125px">Operations </th>
 
@@ -64,20 +62,11 @@
 
                                             </td>
                                             <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.FirstName @item.LastName</a>
+                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.Name </a>
 
                                             </td>
                                             <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.GenderType </a>
-
-                                            </td>
-                                            <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.TraineeId </a>
-
-                                            </td>     
-                                            <td>
-                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.Email </a>
-
+                                                <a href="#" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">@item.Email</a>
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -96,7 +85,7 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="~/ProfileAccount/AccountProfileTrainees/Delete/@item.Id" class="menu-link px-3" data-kt-users-table-filter="delete_row">حذف</a>
+                                                        <a href="~/ProfileAccount/AccountProfileManagers/Delete/@item.Id" class="menu-link px-3" data-kt-users-table-filter="delete_row">حذف</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 </div>

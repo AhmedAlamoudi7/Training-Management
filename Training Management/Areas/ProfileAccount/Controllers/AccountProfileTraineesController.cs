@@ -64,7 +64,15 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
             await traineeService.Update(user);
             return Redirect(Constant.Links.ProfileUsersEditTrainee + user.Id);
         }
-
-
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+            await traineeService.Delete(id);
+            return Redirect(Constant.Links.ProfileHomeTrainees);
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace TrainingManagement.Services
                 Name = adviser.Name,
                 Email = adviser.ApplicationUser.Email,
                 CreatedAt = adviser.CreatedAt,
+                DesciplineType = adviser.DesciplineType
              }).ToListAsync();
             return advisers;
         }

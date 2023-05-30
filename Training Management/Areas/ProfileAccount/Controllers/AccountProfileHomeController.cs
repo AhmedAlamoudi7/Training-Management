@@ -16,19 +16,26 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
 		{
 			return View();
         }
-		public async Task<IActionResult> Advisors()
-		{
-			return View();
-		}
+		public async Task<IActionResult> Advisors(string? GeneralSearch)
+        {
+                var data = await adviserService.GetAll(GeneralSearch);
+                return View(data);           
+        }
 		public async Task<IActionResult> TrainingProgrammes()
 		{
 			return View();
 		}
-		public async Task<IActionResult> Trainees()
+		public async Task<IActionResult> Trainees(string? GeneralSearch)
 		{
-			return View();
-		}
-		public async Task<IActionResult> TrainingProgrammesRequest()
+            var data = await traineeService.GetAll(GeneralSearch);
+            return View(data);
+        }
+        public async Task<IActionResult> Managers(string? GeneralSearch)
+        {
+            var data = await managerService.GetAll(GeneralSearch);
+            return View(data);
+        }
+        public async Task<IActionResult> TrainingProgrammesRequest()
 		{
 			return View();
 		}

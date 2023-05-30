@@ -20,6 +20,8 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
         {
             this.userManager = userManager;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> EditAdvisor(int Id)
         {
@@ -64,8 +66,15 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
             await adviserService.Update(user);
             return Redirect(Constant.Links.ProfileUsersEditAdvisor + user.Id);
         }
-
-
-
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+            await adviserService.Delete(id);
+            return Redirect(Constant.Links.ProgileHomeAdvisors);
+        }
     }
 }
