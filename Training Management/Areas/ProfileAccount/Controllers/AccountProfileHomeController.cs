@@ -24,7 +24,7 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
 		public async Task<IActionResult> TrainingProgrammes()
 		{
 			return View();
-		}
+        }
 		public async Task<IActionResult> Trainees(string? GeneralSearch)
 		{
             var data = await traineeService.GetAll(GeneralSearch);
