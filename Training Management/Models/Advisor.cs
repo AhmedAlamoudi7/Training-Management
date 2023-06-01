@@ -15,6 +15,7 @@ namespace Training_Management.Models
         // Navigation properties
         public List<Trainee> Trainees { get; set; }
 		public List<Meeeting> Meeeting { get; set; }
+        public List<TrainingProgram> TrainingProgram { get; set; }
 
-	}
+    }
 }

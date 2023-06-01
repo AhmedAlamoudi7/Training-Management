@@ -128,6 +128,8 @@ namespace TrainingManagement.Constants
             public const string ProgileHomeAdvisors = "/ProfileAccount/AccountProfileHome/Advisors";
             public const string ProfileHomeTrainees = "/ProfileAccount/AccountProfileHome/Trainees";
             public const string ProfileHomeManagers = "/ProfileAccount/AccountProfileHome/Managers";
+            public const string ProfileHomeTrainingProgrammes = "/ProfileAccount/AccountProfileHome/TrainingProgrammes";
+            public const string ProfileHomeTrainingProgrammesRequest = "/ProfileAccount/AccountProfileHome/TrainingProgrammesRequest";
 
             public const string ConfirmEmailWithUserIdParameter = "/ProfileAccount/AccountProfileUsers/ConfirmEmail?userId=";
             public const string Login = "~/Identity/Account/Login";

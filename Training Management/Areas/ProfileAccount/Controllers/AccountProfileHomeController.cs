@@ -8,9 +8,15 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
 {
      public class AccountProfileHomeController : BaseController
     {
-		public AccountProfileHomeController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService) : base(userService, adviserService, traineeService, managerService)
+		private readonly ITrainingProgrammeService _trainingProgrammeService;
+        private readonly ITrainingProgrammeRequestService trainingProgrammeRequestService;
+
+        public AccountProfileHomeController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService, ITrainingProgrammeService trainingProgrammeService, ITrainingProgrammeRequestService trainingProgrammeRequestService) : base(userService, adviserService, traineeService, managerService)
 		{
-		}
+            _trainingProgrammeService = trainingProgrammeService;
+            this.trainingProgrammeRequestService = trainingProgrammeRequestService;
+
+        }
 
 		public async Task<IActionResult> Index()
 		{
@@ -21,9 +27,10 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
                 var data = await adviserService.GetAll(GeneralSearch);
                 return View(data);           
         }
-		public async Task<IActionResult> TrainingProgrammes()
-		{
-			return View();
+		public async Task<IActionResult> TrainingProgrammes(string? GeneralSearch)
+        {
+            var data = await _trainingProgrammeService.GetAll(GeneralSearch);
+            return View(data);
         }
 		public async Task<IActionResult> Trainees(string? GeneralSearch)
 		{
@@ -35,10 +42,11 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
             var data = await managerService.GetAll(GeneralSearch);
             return View(data);
         }
-        public async Task<IActionResult> TrainingProgrammesRequest()
-		{
-			return View();
-		}
+        public async Task<IActionResult> TrainingProgrammesRequest(string? GeneralSearch)
+        {
+            var data = await trainingProgrammeRequestService.GetAll(GeneralSearch);
+            return View(data);
+        }
 		public async Task<IActionResult> Notifications()
 		{
 			return View();

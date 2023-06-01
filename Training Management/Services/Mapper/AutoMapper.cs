@@ -31,7 +31,14 @@ namespace Shawrney.infrastructure.Mapper
             //trainee
             CreateMap<Manager, ManagerViewModel>();
             CreateMap<CreateManagerDto, Manager>();
-            CreateMap<UpdateManagerDto, Manager>().ReverseMap();
+ 
+            //trainee
+            CreateMap<TrainingProgram, TrainingProgrammeViewModel>();
+            CreateMap<CreateTrainigProgrameDto, TrainingProgram>();
+
+            //trainee
+            CreateMap<TraingProgrameTrainee, TrainingProgrammeRequestViewModel>();
+            CreateMap<CreateTrainingProgrammRequestDto, TraingProgrameTrainee>();
         }
     }
 }

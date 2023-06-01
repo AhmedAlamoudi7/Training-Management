@@ -1,0 +1,255 @@
+﻿ @model CreateTrainigProgrameDto
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!--begin::Main-->
+<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+    <!--begin::Content wrapper-->
+    <div class="d-flex flex-column flex-column-fluid">
+        <!--begin::Toolbar-->
+        <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+            <!--begin::Toolbar container-->
+            <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+                <!--begin::Page title-->
+                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                    <!--begin::Title-->
+                     <!--end::Title-->
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-muted">
+                         </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                         <!--end::Item-->
+                    </ul>
+                    <!--end::Breadcrumb-->
+                </div>
+                <!--end::Page title-->
+                <!--begin::Actions-->
+                <!--end::Actions-->
+            </div>
+            <!--end::Toolbar container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Content-->
+        <div id="kt_app_content" class="app-content flex-column-fluid">
+            <!--begin::Content container-->
+            <div id="kt_app_content_container" class="app-container container-xxl">
+                <!--begin::Contacts App- Add New Contact-->
+                <div class="row g-7">
+                    <!--begin::Contact groups-->
+                    <!--end::Contact groups-->
+                    <!--begin::Content-->
+                    <div class="col-xl-9">
+                        <!--begin::Contacts-->
+                        <div class="card card-flush h-lg-100" id="kt_contacts_main">
+                            <!--begin::Card header-->
+                            <div class="card-header pt-7" id="kt_chat_contacts_header">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                                    <span class="svg-icon svg-icon-1 me-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z" fill="currentColor" />
+                                            <path opacity="0.3" d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                    <h2>Add New Item</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-5">
+                                <!--begin::Form-->
+                                <form action="~/ProfileAccount/AccountProfileTrainingProgrammes/Create" method="post" id="kt_ecommerce_settings_general_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="fv-row mb-7 fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label asp-for="Title" class="fs-6 fw-semibold form-label mt-3">
+                                            <span class="required">Title</span>
+                                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="Enter Target Title" id="name_writtenby" name="title">
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+
+                                        <!--end::Input-->
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-7 fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label asp-for="ShortDescription" class="fs-6 fw-semibold form-label mt-3">
+                                            <span class="required">ShortDescription</span>
+                                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <textarea class="form-control form-control-solid" rows="6" data-kt-element="input" name="shortDescription"></textarea>
+                                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+
+                                        <!--end::Input-->
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+                                    <div class="fv-row mb-5 fv-plugins-icon-container">
+                                        <!--begin::Col-->
+                                        <div class="col-md-12 fv-row">
+                                            <label class="required fs-6 fw-semibold mb-2">المستشار</label>
+                                            @*	<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select a Team Member" name="specializationId">
+                                            </select>*@
+                                            <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select a Team Member" asp-for="AdvisorId" class="form-control" asp-items="@ViewBag.Advisors">
+                                            </select>
+                                            <span asp-validation-for="AdvisorId" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="fv-row mb-7 fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label asp-for="IsPaid" class="fs-6 fw-semibold form-label mt-3">
+                                            <span class="required">اIsPaid</span>
+                                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <div class="col-lg-12 fv-row">
+                                            <select asp-for="IsPaid" class="form-control"  name="isPaid"> 
+                                                <option value="0">Paid</option>
+                                                <option value="1">Free</option>
+
+                                            </select>
+                                            <span asp-validation-for="IsPaid" class="text-danger"></span>
+                                        </div>
+                                     <!--begin::Input group-->
+                                        <div class="fv-row mb-7 fv-plugins-icon-container">
+                                            <!--begin::Label-->
+                                            <label asp-for="Date" class="fs-6 fw-semibold form-label mt-3">
+                                                <span class="required">Date</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                            </label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="date" class="form-control form-control-solid" placeholder="Enter Target Title" id="name_writtenby" name="date">
+                                            <span asp-validation-for="Date" class="text-danger"></span>
+
+                                            <!--end::Input-->
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--begin::Input group-->
+                                        <div class="fv-row mb-7 fv-plugins-icon-container">
+                                            <!--begin::Label-->
+                                            <label asp-for="Start" class="fs-6 fw-semibold form-label mt-3">
+                                                <span class="required">Start</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                            </label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="datetime-local" class="form-control form-control-solid" placeholder="Enter Target Title" id="name_writtenby" name="start">
+                                            <span asp-validation-for="Start" class="text-danger"></span>
+
+                                            <!--end::Input-->
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--begin::Input group-->
+                                        <div class="fv-row mb-7 fv-plugins-icon-container">
+                                            <!--begin::Label-->
+                                            <label asp-for="End" class="fs-6 fw-semibold form-label mt-3">
+                                                <span class="required">End</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" aria-label="Enter the contact's name." data-kt-initialized="1"></i>
+                                            </label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="datetime-local" class="form-control form-control-solid" placeholder="Enter Target Title" id="name_writtenby" name="end">
+                                            <span asp-validation-for="End" class="text-danger"></span>
+
+                                            <!--end::Input-->
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+
+                                        <!--end::Input-->
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
+
+ 
+  
+                                    <!--end::Row-->
+                                    <!--begin::Input group-->
+                                    <!--end::Input group-->
+                                    <!--begin::Separator-->
+                                    <div class="separator mb-6"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::Action buttons-->
+                                    <div class="d-flex justify-content-end">
+                                        <!--begin::Button-->
+                                        <button type="reset" data-kt-contacts-type="cancel" class="btn btn-light me-3">الغاء</button>
+                                        <!--end::Button-->
+                                        <!--begin::Button-->
+                                        <button type="submit" data-kt-contacts-type="submit" class="btn btn-primary">
+                                            <span class="indicator-label">حفظ</span>
+                                            <span class="indicator-progress">
+                                                الرجاء الانتظار...
+                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                        <!--end::Button-->
+                                    </div>
+                                    <!--end::Action buttons-->
+                                    <div></div>
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Contacts-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Contacts App- Add New Contact-->
+            </div>
+            <!--end::Content container-->
+        </div>
+        <!--end::Content-->
+    </div>
+    <!--end::Content wrapper-->
+</div>
+<!--end:::Main-->
+@section Scripts
+    {
+    <script src="~/Metronic/dist/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/Metronic/dist/assets/js/scripts.bundle.js"></script>
+
+    <!--end::Scrolltop-->
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used by this page)-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--end::Scrolltop-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Metronic/src/js/fillterAndPagingUser.js"></script>
+    <script>
+
+        <script src="~/Metronic/dist/assets/js/custom/apps/projects/list/list.js" ></script>
+    <script src="~/Metronic/src/js/custom/utilities/modals/users-search.js"></script>
+    <script src="~/metronic/src/js/custom/utilities/modals/new-target.js"></script>
+
+
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used by this page)-->
+ 
+}

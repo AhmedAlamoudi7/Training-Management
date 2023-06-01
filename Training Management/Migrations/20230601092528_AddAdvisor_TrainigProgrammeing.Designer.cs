@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Training_Management.Data;
 
@@ -11,9 +12,11 @@ using Training_Management.Data;
 namespace Training_Management.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230601092528_AddAdvisor_TrainigProgrammeing")]
+    partial class AddAdvisor_TrainigProgrammeing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -512,29 +515,11 @@ namespace Training_Management.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
                     b.Property<int>("TraineeId")
                         .HasColumnType("int");
 
                     b.Property<int>("TrainingProgramId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("status")
                         .HasColumnType("bit");
@@ -742,7 +727,7 @@ namespace Training_Management.Migrations
             modelBuilder.Entity("Training_Management.Models.TrainingProgram", b =>
                 {
                     b.HasOne("Training_Management.Models.Advisor", "Advisor")
-                        .WithMany("TrainingProgram")
+                        .WithMany()
                         .HasForeignKey("AdvisorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -755,8 +740,6 @@ namespace Training_Management.Migrations
                     b.Navigation("Meeeting");
 
                     b.Navigation("Trainees");
-
-                    b.Navigation("TrainingProgram");
                 });
 
             modelBuilder.Entity("Training_Management.Models.ApplicationUser", b =>

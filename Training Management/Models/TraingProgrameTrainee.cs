@@ -2,7 +2,7 @@
 
 namespace Training_Management.Models
 {
-	public class TraingProgrameTrainee
+	public class TraingProgrameTrainee :BaseEntity
 	{
 		public int Id { get; set; }
 		public int TraineeId { get; set; }

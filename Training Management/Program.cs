@@ -42,6 +42,8 @@ builder.Services.AddScoped<IAdviserService,AdviserService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITraineeService, TraineeService>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
+builder.Services.AddScoped<ITrainingProgrammeService, TrainingProgrammeService>();
+builder.Services.AddScoped<ITrainingProgrammeRequestService, TrainingProgrammeRequestService>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Build.Framework;
+using Training_Management.Models;
 
 namespace Training_Management.Dtos
 {
@@ -17,5 +18,8 @@ namespace Training_Management.Dtos
         public DateTime Start { get; set; }
         [Required]
         public DateTime End { get; set; }
+
+        public int AdvisorId { get; set; }
+ 
     }
 }
