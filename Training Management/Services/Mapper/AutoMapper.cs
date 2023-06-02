@@ -39,6 +39,11 @@ namespace Shawrney.infrastructure.Mapper
             //trainee
             CreateMap<TraingProgrameTrainee, TrainingProgrammeRequestViewModel>();
             CreateMap<CreateTrainingProgrammRequestDto, TraingProgrameTrainee>();
+
+
+            //trainee
+            CreateMap<Document, DocumentViewModel>();
+            CreateMap<CreateDocumentDto, Document>().ForMember(src => src.FileName, opt => opt.Ignore());
         }
     }
 }

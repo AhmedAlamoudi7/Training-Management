@@ -37,6 +37,7 @@ namespace Training_Management.Data
         public DbSet<Document> Documents { get; set; }
 		public DbSet<Meeeting> Meeetings { get; set; }
 		public DbSet<TraingProgrameTrainee> TraingProgrameTrainees { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
-	}
+    }
 }

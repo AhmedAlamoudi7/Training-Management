@@ -227,6 +227,9 @@ namespace Training_Management.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FCMToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("bit");
 
@@ -289,10 +292,6 @@ namespace Training_Management.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -433,6 +432,63 @@ namespace Training_Management.Migrations
                     b.HasIndex("TraineeId");
 
                     b.ToTable("Meeetings");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Action")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ActionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NotificationUserType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Trainee", b =>
@@ -666,13 +722,11 @@ namespace Training_Management.Migrations
 
             modelBuilder.Entity("Training_Management.Models.Document", b =>
                 {
-                    b.HasOne("Training_Management.Models.Trainee", "Trainee")
+                    b.HasOne("Training_Management.Models.Trainee", null)
                         .WithMany("Documents")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Trainee");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Manager", b =>
@@ -701,6 +755,17 @@ namespace Training_Management.Migrations
                     b.Navigation("Advisor");
 
                     b.Navigation("Trainee");
+                });
+
+            modelBuilder.Entity("Training_Management.Models.Notification", b =>
+                {
+                    b.HasOne("Training_Management.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Notifications")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Training_Management.Models.Trainee", b =>
@@ -764,6 +829,8 @@ namespace Training_Management.Migrations
                     b.Navigation("Advisor");
 
                     b.Navigation("Manager");
+
+                    b.Navigation("Notifications");
 
                     b.Navigation("Trainee");
                 });

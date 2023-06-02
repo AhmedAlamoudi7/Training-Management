@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
 using Training_Management.Data;
+using Training_Management.Dtos;
 using Training_Management.Models;
 using TrainingManagement.Constants;
 using TrainingManagement.Dtos;
@@ -218,6 +219,17 @@ namespace TrainingManagement.Services
                 return SignInResult.Failed;
             }
             return SignInResult.Success;
+        }
+        public async Task SaveFcmToken(DeviceTokenRequest dto, string userId)
+        {
+            var user = await _db.Users.SingleOrDefaultAsync(x => x.Id.Equals(userId));
+            if (user == null)
+                throw new EntityNotFoundException();
+
+            user.FCMToken = dto.FCMToken;
+            user.UpdatedAt = DateTime.Now;
+            user.UpdatedBy = userId;
+            await _userManager.UpdateAsync(user);
         }
     }
 }

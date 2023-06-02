@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using TrainingManagement.Services;
 using Training_Management.Areas.ProfileAccount.Controllers;
 using TrainingManagement.Constants;
+using Firebase.Auth;
+using static Google.Rpc.Context.AttributeContext.Types;
+using Training_Management.Controllers;
 
 namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
 {
@@ -14,14 +17,23 @@ namespace ShawrneyClientWeb.Areas.ProfileAccount.Controllers
         public AccountProfileHomeController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService, ITrainingProgrammeService trainingProgrammeService, ITrainingProgrammeRequestService trainingProgrammeRequestService) : base(userService, adviserService, traineeService, managerService)
 		{
             _trainingProgrammeService = trainingProgrammeService;
-            this.trainingProgrammeRequestService = trainingProgrammeRequestService;
-
+            this.trainingProgrammeRequestService = trainingProgrammeRequestService; 
         }
+  
+ 
+        public async Task<IActionResult> Index()
+        {
+            //var token = HttpContext.Session.GetString("_UserToken");
 
-		public async Task<IActionResult> Index()
-		{
-			return View();
-        }
+            //if (token != null)
+            //{
+                return View();
+            //}
+            //else
+            //{
+            //    return Redirect("/Identity/Account/Login");
+            //}
+         }
 		public async Task<IActionResult> Advisors(string? GeneralSearch)
         {
                 var data = await adviserService.GetAll(GeneralSearch);

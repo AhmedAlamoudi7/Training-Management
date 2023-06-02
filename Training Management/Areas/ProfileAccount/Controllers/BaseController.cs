@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using TrainingManagement.Services;
 using TrainingManagement.Constants;
+using Firebase.Auth;
 
 namespace Training_Management.Areas.ProfileAccount.Controllers
 {
@@ -14,16 +15,26 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
         protected readonly IAdviserService adviserService;
         protected readonly ITraineeService traineeService;
         protected readonly IManagerService managerService;
+        
 
-		public BaseController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService)
+        public BaseController(IUserService userService, IAdviserService adviserService, ITraineeService traineeService, IManagerService managerService)
 		{
 			this.userService = userService;
 			this.adviserService = adviserService;
 			this.managerService = managerService;
 			this.traineeService= traineeService;
-		}
 
-		public override void OnActionExecuting(ActionExecutingContext context)
+        }
+        protected readonly FirebaseAuthProvider auth;
+        public BaseController() {
+
+            this.auth = new FirebaseAuthProvider(
+        new FirebaseConfig("AIzaSyCjg6D59I1Qwlx0jLZp4_oppWTxC4vmCwM"));
+
+        }
+
+
+        public override void OnActionExecuting(ActionExecutingContext context)
 		{
 			base.OnActionExecuting(context);
 			if (User.Identity.IsAuthenticated)

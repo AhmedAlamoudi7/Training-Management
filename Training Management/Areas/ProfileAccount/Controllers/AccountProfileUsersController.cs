@@ -28,6 +28,7 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
         [HttpGet]
          public async Task<IActionResult> Logout(string returnUrl = null)
         {
+            HttpContext.Session.Remove("_UserToken");
             await _signInManager.SignOutAsync();
             foreach (var cookie in Request.Cookies.Keys)
             {

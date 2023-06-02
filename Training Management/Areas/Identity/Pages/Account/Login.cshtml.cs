@@ -17,6 +17,9 @@ using Microsoft.Extensions.Logging;
 using Training_Management.Models;
 using TrainingManagement.Services;
 using System.Net.Mail;
+using Newtonsoft.Json;
+using static Google.Rpc.Context.AttributeContext.Types;
+using Firebase.Auth;
 
 namespace Training_Management.Areas.Identity.Pages.Account
 {
@@ -24,16 +27,17 @@ namespace Training_Management.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
 		private readonly ITraineeService  _traineeService;
-
-		private readonly ILogger<LoginModel> _logger;
+        private readonly FirebaseAuthProvider auth;
+        private readonly ILogger<LoginModel> _logger;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, ITraineeService traineeService)
         {
             _signInManager = signInManager;
             _logger = logger;
             _traineeService = traineeService;
-
-		}
+            auth = new FirebaseAuthProvider(
+                new FirebaseConfig("AIzaSyCjg6D59I1Qwlx0jLZp4_oppWTxC4vmCwM"));
+        }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -124,8 +128,26 @@ namespace Training_Management.Areas.Identity.Pages.Account
 
 					if (trainee != null)
                     {
+                        try
+                        {
+                            //log in an existing user
+                            var fbAuthLink = await auth
+                                            .SignInWithEmailAndPasswordAsync(Input.Email, Input.Password);
+                            string token = fbAuthLink.FirebaseToken;
+                            //save the token to a session variable
+                            if (token != null)
+                            {
+                                HttpContext.Session.SetString("_UserToken", token);
 
-                        result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                                result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                            }
+
+                        }
+                        catch (FirebaseAuthException ex)
+                        {
+                             return LocalRedirect(returnUrl);
+                        }
+
 
                     }
 
@@ -133,8 +155,27 @@ namespace Training_Management.Areas.Identity.Pages.Account
                 else
 				{
 					var username = new EmailAddressAttribute().IsValid(Input.Email) ? new MailAddress(Input.Email).User : Input.Email;
+                    try
+                    {
+                        //log in an existing user
+                        var fbAuthLink = await auth
+                                        .SignInWithEmailAndPasswordAsync(Input.Email, Input.Password);
+                        string token = fbAuthLink.FirebaseToken;
+                        //save the token to a session variable
+                        if (token != null)
+                        {
+                            HttpContext.Session.SetString("_UserToken", token);
 
-					result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                            result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                        }
+
+                    }
+                    catch (FirebaseAuthException ex)
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
+
+                    result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 }
 
                 if (result.Succeeded)

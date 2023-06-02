@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TrainingManagement.Services;
 using Training_Management.Data;
 using Training_Management.Models;
+using Training_Management.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(connectionString));
+
+var connectionString2 = builder.Configuration.GetConnectionString("DefaultConnection2") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<NoSqlDbContext>(options =>
+    options.UseSqlServer(connectionString2));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(config =>
@@ -44,7 +50,18 @@ builder.Services.AddScoped<ITraineeService, TraineeService>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
 builder.Services.AddScoped<ITrainingProgrammeService, TrainingProgrammeService>();
 builder.Services.AddScoped<ITrainingProgrammeRequestService, TrainingProgrammeRequestService>();
-
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddSingleton<IFcmService, FcmService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+ 
+//Add sessions
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -63,6 +80,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

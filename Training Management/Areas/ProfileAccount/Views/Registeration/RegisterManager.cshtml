@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en" dir="rtl" direction="rtl" style="direction:rtl;">
+<html lang="en" dir="ltr" direction="ltr" style="direction:ltr;">
 <!--begin::Head-->
 <head>
 	<title>انشاء حساب</title>
@@ -79,12 +79,12 @@
 						<!--end::Back link-->
 						<!--begin::Sign Up link-->
 						<div class="m-0">
-							<span class="text-gray-400 fw-bold fs-5 me-2" data-kt-translate="sign-up-head-desc">عضوا فعلا ؟</span>
-							<a asp-area="Identity" asp-page="/Account/Login" class="link-primary fw-bold fs-5" data-kt-translate="sign-up-head-link">تسجيل دخول</a>
+							<span class="text-gray-400 fw-bold fs-5 me-2" data-kt-translate="sign-up-head-desc">already register ؟</span>
+							<a asp-area="Identity" asp-page="/Account/Login" class="link-primary fw-bold fs-5" data-kt-translate="sign-up-head-link">Login</a>
 						</div>
 						<!--end::Sign Up link=-->
 						<div class="m-0">
-							<a href="~/Home/Index" class="link-primary fw-bold fs-5" data-kt-translate="sign-in-head-link">الصفحة الرئيسية</a>
+							<a href="~/Home/Index" class="link-primary fw-bold fs-5" data-kt-translate="sign-in-head-link">Home</a>
 						</div>
 					</div>
 					<!--end::Header-->
@@ -95,7 +95,7 @@
 							<!--begin::Heading-->
 							<div class="text-start mb-10">
 								<!--begin::Title-->
-								<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-up-title">انشئ حساب</h1>
+								<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-up-title">Register</h1>
 								<!--end::Title-->
 								<!--begin::Text-->
 								<!--end::Link-->
@@ -104,11 +104,11 @@
 							<!--begin::Input group-->
 							<div class="row fv-row mb-7">
 								<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-								<label class="form-label required">الاسم</label>
+								<label class="form-label required">Name</label>
 
 								<!--begin::Col-->
 								<div class="col-xl-12 mb-10">
-									<input class="form-control form-control-lg form-control-solid" type="text" required placeholder="الاسم " id="name" name="name" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid" type="text" required  id="name" name="name" autocomplete="off" />
 								</div>
 								<!--end::Col-->
 								<!--begin::Col-->							 
@@ -117,7 +117,7 @@
 							<!--end::Input group-->
 							<!--begin::Input group-->
 							<div class="fv-row mb-10">
-								<input class="form-control form-control-lg form-control-solid" type="email" required placeholder="البريد الالكتروني" name="email" id="email" autocomplete="off" />
+								<input class="form-control form-control-lg form-control-solid" type="email" required placeholder="Email" name="email" id="email" autocomplete="off" />
 							</div>
 
 							<!--end::Input group-->
@@ -127,7 +127,7 @@
 								<div class="mb-1">
 									<!--begin::Input wrapper-->
 									<div class="position-relative mb-3">
-										<input class="form-control form-control-lg form-control-solid" required type="password" placeholder="كلمة المرور" name="password" id="password" autocomplete="off" />
+										<input class="form-control form-control-lg form-control-solid" required type="password" placeholder="password" name="password" id="password" autocomplete="off" />
 										<span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
 											<i class="bi bi-eye-slash fs-2"></i>
 											<i class="bi bi-eye fs-2 d-none"></i>
@@ -157,7 +157,7 @@
 							<!--end::Input group-->
 							<div class="fv-row mb-10">
 								<!--end::Label-->
-								<label class="form-label form-label-lg form-label-solid">الموافقة على شروط الاستخدام</label>
+								<label class="form-label form-label-lg form-label-solid">Acceot trams</label>
 								<!--end::Label--><div class="d-flex flex-stack">
 								</div>
 								<!--begin::Checkboxes-->
@@ -172,7 +172,7 @@
 								<!--begin::Submit-->
 								<button id="kt_sign_up_submit" class="btn btn-primary" data-kt-translate="sign-up-submit">
 									<!--begin::Indicator label-->
-									<span class="indicator-label">تسجيل</span>
+									<span class="indicator-label">Login</span>
 									<!--end::Indicator label-->
 									<!--begin::Indicator progress-->
 									<span class="indicator-progress">

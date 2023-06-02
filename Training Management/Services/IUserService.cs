@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Training_Management.Dtos;
 using TrainingManagement.Dtos;
 using TrainingManagement.Helpers;
 using TrainingManagement.ViewModels;
@@ -18,6 +19,7 @@ namespace TrainingManagement.Services
         UserViewModel GetUserByEmailAllUsers(string UserName);
         Task<IEnumerable<UserViewModel>> GetBasicinfo(Querys querys);
         Task<SignInResult> Login(string UserName, string Password);
-        Task<UserViewModel> GetUserByNameAsync(string UserName);       
+        Task<UserViewModel> GetUserByNameAsync(string UserName);
+        Task SaveFcmToken(DeviceTokenRequest dto, string userId);
     }
 }

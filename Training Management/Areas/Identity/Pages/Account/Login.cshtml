@@ -3,13 +3,13 @@
 @model LoginModel
 
 @{
-	ViewData["Title"] = "تسجيل الدخول";
+	ViewData["Title"] = "Login";
 	Layout = null;
 }
 
 <!DOCTYPE html>
 
-<html lang="en" dir="rtl" direction="rtl" style="direction:rtl;">
+<html lang="en" dir="ltr" direction="ltr" style="direction:ltr;">
 <!--begin::Head-->
 <head>
 	<meta name="description" content="  " />
@@ -114,7 +114,7 @@
  						<!--end::Back link-->
 						<!--begin::Sign Up link-->
 						<div class="m-2" >
- 							<a href="~/Home/Index" class="link-primary fw-bold fs-1"  >الصفحة الرئيسية</a>
+ 							<a href="~/Home/Index" class="link-primary fw-bold fs-1"  >Home</a>
 						</div>
 						<!--end::Sign Up link=-->
 					</div>
@@ -128,9 +128,9 @@
 							<!--begin::Body-->
 							<div class="card-body">
 								<!--begin::Heading-->
-								<div class="text-start mb-10">
+								<div class="text-end mb-10">
 									<!--begin::Title-->
-									<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">تسجيل الدخول</h1>
+									<h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Login</h1>
 									<!--end::Title-->
 									<!--begin::Text-->
  									<!--end::Link-->
@@ -138,31 +138,31 @@
 								<!--begin::Heading-->
 								<!--begin::Input group=-->
 								<div class="fv-row mb-8" id="emaildiv">
-									<label class="form-label required">البريد الالكتروني</label>
+									<label class="form-label required">Email</label>
 
 									<!--begin::Email-->
-									<input type="text" placeholder="البريد الالكتروني" id="email" name="email" autocomplete="off" class="form-control form-control-solid" />
+									<input type="text"  id="email" name="email" autocomplete="off" class="form-control form-control-solid" />
 									<!--end::Email-->
 								</div>
 								<div class="fv-row mb-8" id="traineeIdDiv">
-									<label class="form-label required">رقم المتدرب الخاص</label>
+									<label class="form-label required">Trainee Id</label>
 
 									<!--begin::Email-->
-									<input type="text" placeholder="رقم المتدرب الخاص" name="traineeId" id="traineeId" autocomplete="off" class="form-control form-control-solid" />
+									<input type="text"  name="traineeId" id="traineeId" autocomplete="off" class="form-control form-control-solid" />
 									<!--end::Email-->
 								</div>
 								<!--end::Input group=-->
 								<div class="fv-row mb-7">
-									<label class="form-label required">كلمة المرور</label>
+									<label class="form-label required">Password</label>
 
 									<!--begin::Password-->
-									<input type="password" placeholder="كلمة المرور" name="password" autocomplete="off" class="form-control form-control-solid" />
+									<input type="password" name="password" autocomplete="off" class="form-control form-control-solid" />
 									<!--end::Password-->
 								</div>
 								<!--end::Input group=-->
 								<div class="fv-row mb-7">
 
-									<label class="form-label required">نوع الحساب</label>
+									<label class="form-label required">Type </label>
 									<!--end::Label-->
 									<!--begin::Input-->
 									<select name="renderType" id="roleTypes" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
@@ -187,11 +187,11 @@
 									<!--begin::Submit-->
 									<button id="kt_sign_in_submit" class="btn btn-primary me-2 flex-shrink-0">
 										<!--begin::Indicator label-->
-										<span class="indicator-label" data-kt-translate="sign-in-submit">تسجيل دخول</span>
+										<span class="indicator-label" data-kt-translate="sign-in-submit">Login</span>
 										<!--end::Indicator label-->
 										<!--begin::Indicator progress-->
 										<span class="indicator-progress">
-											<span data-kt-translate="general-progress">الرجاء الإنتظار</span>
+											<span data-kt-translate="general-progress">Please Waiting</span>
 											<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
 										</span>
 										<!--end::Indicator progress-->

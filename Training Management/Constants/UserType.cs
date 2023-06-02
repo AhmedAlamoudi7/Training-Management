@@ -4,5 +4,6 @@
     {
         SuperAdmin = 1,
         Customer = 2,
+        test =3,
     }
 }

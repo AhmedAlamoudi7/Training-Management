@@ -17,6 +17,8 @@ using Training_Management.Dtos;
 using DocumentFormat.OpenXml.Math;
 using Microsoft.Extensions.Hosting;
 using DocumentFormat.OpenXml.InkML;
+using FirebaseAdmin.Messaging;
+using TrainingManagement.Enums;
 
 namespace TrainingManagement.Services
 {
@@ -26,12 +28,17 @@ namespace TrainingManagement.Services
         private readonly IMapper _mapper;
         public readonly IUserService _userService;
         private readonly IWebHostEnvironment _env;
-        public TrainingProgrammeRequestService(IWebHostEnvironment env, IUserService userService,ApplicationDbContext db, IMapper mapper)
+        private readonly IFcmService fcmService;
+        private readonly INotificationService _notificationService;
+
+        public TrainingProgrammeRequestService(IWebHostEnvironment env, IUserService userService,ApplicationDbContext db, IMapper mapper, IFcmService fcmService, INotificationService notificationService)
         {
             _db = db;
             _mapper = mapper;
               _userService = userService;
             _env = env;
+            this.fcmService= fcmService;
+            _notificationService = notificationService;
         }
         public async Task<List<TrainingProgrammeRequestViewModel>> GetAll(string? GeneralSearch)
         {
@@ -68,6 +75,13 @@ namespace TrainingManagement.Services
             }
             // means if active set not and if not set active
             model.status = !model.status;
+            var notification = new Training_Management.Models.Notification
+            {
+                 Title = "Trainee Programme Request",
+                 Body = "Trainee Programme Request Change Status",
+                 Action = NotificationType.Test
+            };
+            await _notificationService.SendNotification(model.Trainee.ApplicationUserId, notification);
             _db.TraingProgrameTrainees.Update(model);
             await _db.SaveChangesAsync();
         }

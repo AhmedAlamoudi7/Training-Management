@@ -135,7 +135,7 @@ namespace TrainingManagement.Constants
             public const string Login = "~/Identity/Account/Login";
             public const string Logout = "~/Identity/Account/Logout";
             public const string ProfileUsersEditAdvisor = "~/ProfileAccount/AccountProfileAdvisors/EditAdvisor/";
-            public const string ProfileUsersEditTrainee = "~/ProfileAccount/AccountProfileTrainees/In/";
+            public const string ProfileUsersEditTrainee = "~/ProfileAccount/AccountProfileTrainees/EditTrainee/";
              public const string ProfileUsersEditManager = "~/ProfileAccount/AccountProfileManagers/EditManager/";
 
             public const string ProfileUsersEditUser = "~/ProfileAccount/AccountProfileUsers/EditUser/";
