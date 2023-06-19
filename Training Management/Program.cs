@@ -58,7 +58,7 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 //Add sessions
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });

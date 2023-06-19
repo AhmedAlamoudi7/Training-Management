@@ -17,48 +17,47 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
 		{
             this.userManager = userManager;
 		}
+		[HttpGet]
+		public async Task<IActionResult> EditManager(int Id)
+		{
+			var adviser = await managerService.FindById(Id);
 
-        [HttpGet]
-        public async Task<IActionResult> EditManager(int Id)
-        {
-            var adviser = await managerService.FindById(Id);
+			if (adviser == null)
+				return NotFound();
+			var updateTraineeDto = new UpdateManagerDto
+			{
+				Id = adviser.Id,
+				Email = adviser.ApplicationUser.Email,
+				Name = adviser.Name,
+				ApplicationUserId = adviser.ApplicationUserId,
+			};
+			return View(updateTraineeDto);
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> EditManager(UpdateManagerDto dto)
+		{
+			var user = await managerService.FindById(dto.Id);
 
-            if (adviser == null)
-                return NotFound();
-            var updateTraineeDto = new UpdateManagerDto
-            {
-                Id = adviser.Id,
-                Email = adviser.ApplicationUser.Email,
-                Name = adviser.Name,
-                ApplicationUserId = adviser.ApplicationUserId,
-            };
-            return View(updateTraineeDto);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditManager(UpdateManagerDto dto)
-        {
-            var user = await managerService.FindById(dto.Id);
-
-            if (user == null)
-                return NotFound();
-            var userWithSameEmail = await userManager.FindByEmailAsync(dto.Email);
-            if (userWithSameEmail != null && userWithSameEmail.Id != dto.ApplicationUserId)
-            {
-                ModelState.AddModelError(Constant.Email, Constant.Response.EmailIsExist);
-                return View(dto);
-            }
-            if (await userManager.FindByEmailAsync(dto.Email) != null && userWithSameEmail.Email != dto.Email)
-            {
-                ModelState.AddModelError(Constant.Email, Constant.Response.EmailIsExist);
-                return View(dto);
-            }
-            user.Name = dto.Name;
-             user.ApplicationUserId = dto.ApplicationUserId;
-            await managerService.Update(user);
-            return Redirect(Constant.Links.ProfileUsersEditManager + user.Id);
-        }
-        [HttpGet]
+			if (user == null)
+				return NotFound();
+			var userWithSameEmail = await userManager.FindByEmailAsync(dto.Email);
+			if (userWithSameEmail != null && userWithSameEmail.Id != dto.ApplicationUserId)
+			{
+				ModelState.AddModelError(Constant.Email, Constant.Response.EmailIsExist);
+				return View(dto);
+			}
+			if (await userManager.FindByEmailAsync(dto.Email) != null && userWithSameEmail.Email != dto.Email)
+			{
+				ModelState.AddModelError(Constant.Email, Constant.Response.EmailIsExist);
+				return View(dto);
+			}
+			user.Name = dto.Name;
+			user.ApplicationUserId = dto.ApplicationUserId;
+			await managerService.Update(user);
+			return Redirect(Constant.Links.ProfileUsersEditManager + user.Id);
+		}
+		[HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             if (!ModelState.IsValid)

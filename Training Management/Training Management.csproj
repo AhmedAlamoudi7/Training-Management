@@ -33,8 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\NoSqlDb\" />
     <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Training Management.Infrastructure\Training Management.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

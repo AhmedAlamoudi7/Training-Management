@@ -24,8 +24,9 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
 		{
             _signInManager = signInManager;
             this.userManager = userManager;
-        }
-        [HttpGet]
+		}
+	
+		[HttpGet]
          public async Task<IActionResult> Logout(string returnUrl = null)
         {
             HttpContext.Session.Remove("_UserToken");

@@ -25,13 +25,7 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
 			this.traineeService= traineeService;
 
         }
-        protected readonly FirebaseAuthProvider auth;
-        public BaseController() {
-
-            this.auth = new FirebaseAuthProvider(
-        new FirebaseConfig("AIzaSyCjg6D59I1Qwlx0jLZp4_oppWTxC4vmCwM"));
-
-        }
+ 
 
 
         public override void OnActionExecuting(ActionExecutingContext context)

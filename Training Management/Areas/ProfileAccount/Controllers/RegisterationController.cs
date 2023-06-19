@@ -26,8 +26,9 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
 		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
         public readonly IUserService _userService;
+        protected readonly FirebaseAuthProvider auth;
 
-		public RegisterationController(IUserService userService, IAdviserService adviserService,
+        public RegisterationController(IUserService userService, IAdviserService adviserService,
 			ITraineeService traineeService, IManagerService managerService, ApplicationDbContext db,
 			UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager,
 			SignInManager<ApplicationUser> signInManager) : base(userService, adviserService, traineeService, managerService)
@@ -36,7 +37,9 @@ namespace Training_Management.Areas.ProfileAccount.Controllers
 				_userManager = userManager;
 				_roleManager = roleManager;
 				_signInManager = signInManager;
- 
+
+            this.auth = new FirebaseAuthProvider(
+        new FirebaseConfig("AIzaSyCjg6D59I1Qwlx0jLZp4_oppWTxC4vmCwM"));
         }
 
 		[HttpGet]
